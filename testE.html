@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>〈2026年1月～6月実施〉生命保険一般課程試験【フォームE】Webテスト</title>
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-hover: #1e429f;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --correct-bg: #ecfdf5;
+      --correct-border: #10b981;
+      --correct-text: #065f46;
+      --wrong-bg: #fef2f2;
+      --wrong-border: #ef4444;
+      --wrong-text: #991b1b;
+      --partial-bg: #fffbeb;
+      --partial-border: #f59e0b;
+      --partial-text: #92400e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .meta-badge {
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: #f1f5f9;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 1.5rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    .notice-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .notice-box ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    #score-banner {
+      display: none;
+      background: var(--card-bg);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(26, 86, 219, 0.08);
+    }
+
+    #score-banner.visible {
+      display: block;
+    }
+
+    .score-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .score-main {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.25rem 0;
+    }
+
+    .score-sub {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .pass-badge {
+      display: inline-block;
+      margin-top: 0.6rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .pass-ok {
+      background: var(--correct-bg);
+      color: var(--correct-text);
+      border: 1px solid var(--correct-border);
+    }
+
+    .pass-ng {
+      background: var(--wrong-bg);
+      color: var(--wrong-text);
+      border: 1px solid var(--wrong-border);
+    }
+
+    .section-header {
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--primary);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pts-tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #f1f5f9;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    .passage {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .passage p {
+      margin: 0.4rem 0;
+    }
+
+    .blank-mark {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--primary);
+      background: #eff6ff;
+      padding: 0 0.35rem;
+      border-radius: 4px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .word-bank {
+      background: #fff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .word-bank-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .word-bank-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+    }
+
+    table.life-table {
+      width: 100%;
+      max-width: 460px;
+      border-collapse: collapse;
+      margin: 0.75rem 0;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    table.life-table th,
+    table.life-table td {
+      border: 1px solid #cbd5e1;
+      padding: 0.35rem 0.5rem;
+    }
+
+    table.life-table th {
+      background: #e2e8f0;
+      font-weight: 700;
+    }
+
+    .sub-q-row {
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .sub-q-row:first-of-type {
+      border-top: none;
+      padding-top: 0.25rem;
+    }
+
+    .sub-q-header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .q-num-badge {
+      font-weight: 700;
+      color: #fff;
+      background: var(--primary);
+      padding: 0.15rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+    }
+
+    .radio-group,
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .radio-inline {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    label.option-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      font-size: 0.94rem;
+      background: #fff;
+    }
+
+    label.option-label:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    label.option-label input {
+      margin-top: 0.25rem;
+      accent-color: var(--primary);
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    .radio-inline label.option-label {
+      flex: 0 1 auto;
+      min-width: 90px;
+      align-items: center;
+    }
+
+    .radio-inline label.option-label input {
+      margin-top: 0;
+    }
+
+    .judge-badge {
+      display: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+    }
+
+    .judge-correct {
+      display: inline-block;
+      background: var(--correct-bg);
+      color: var(--correct-text);
+      border: 1px solid var(--correct-border);
+    }
+
+    .judge-wrong {
+      display: inline-block;
+      background: var(--wrong-bg);
+      color: var(--wrong-text);
+      border: 1px solid var(--wrong-border);
+    }
+
+    .judge-partial {
+      display: inline-block;
+      background: var(--partial-bg);
+      color: var(--partial-text);
+      border: 1px solid var(--partial-border);
+    }
+
+    .explanation-box {
+      display: none;
+      margin-top: 0.65rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .explanation-box.visible {
+      display: block;
+    }
+
+    .exp-correct {
+      background: var(--correct-bg);
+      border-left: 4px solid var(--correct-border);
+      color: var(--correct-text);
+    }
+
+    .exp-wrong {
+      background: var(--wrong-bg);
+      border-left: 4px solid var(--wrong-border);
+      color: var(--wrong-text);
+    }
+
+    .exp-partial {
+      background: var(--partial-bg);
+      border-left: 4px solid var(--partial-border);
+      color: var(--partial-text);
+    }
+
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2.5rem 0 1rem;
+    }
+
+    button.btn {
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.05s;
+    }
+
+    button.btn:active {
+      transform: translateY(1px);
+    }
+
+    button.btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(26, 86, 219, 0.25);
+    }
+
+    button.btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    button.btn-secondary {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    button.btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 1rem;
+      }
+      .score-main {
+        font-size: 1.9rem;
+      }
+      button.btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>〈2026年1月～6月実施〉生命保険一般課程試験【フォームE】</h1>
+      <span class="meta-badge">全82問 / 100点満点（試験時間目安：40分）</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="notice-box">
+      <strong>出題構成・配点</strong>
+      <ul>
+        <li>問題1～25：語群選択（各1点：25点満点）</li>
+        <li>問題26～30：語群選択・計算（各2点：10点満点）</li>
+        <li>問題31～33：誤っているものを<strong>2つ</strong>選ぶ問題（各4点・部分点2点：12点満点）</li>
+        <li>問題34～37：誤っているものを<strong>1つ</strong>選ぶ問題（各2点：8点満点）</li>
+        <li>問題38～67：正誤問題（各1点：30点満点）</li>
+        <li>問題68～82：文章穴埋め（各1点：15点満点）</li>
+      </ul>
+    </div>
+
+    <div id="score-banner">
+      <div class="score-title">採点結果</div>
+      <div class="score-main" id="score-display">0 / 100 点</div>
+      <div class="score-sub" id="rate-display">正答率：0.0%（完答数：0 / 82問）</div>
+      <div id="pass-indicator"></div>
+    </div>
+
+    <form id="quiz-form" onsubmit="return false;">
+      <div id="quiz-container"></div>
+
+      <div class="action-bar">
+        <button type="button" class="btn btn-primary" onclick="gradeQuiz()">採点する</button>
+        <button type="button" class="btn btn-secondary" onclick="resetQuiz()">リセットしてもう一度解く</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const groupQuestions = [
+      {
+        sectionTitle: "第1部：語群選択問題（問題1～25：各1点）",
+        title: "[募集時の正しい説明 - ①]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [1]～[2] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>1. 生命保険契約は生命保険会社と契約者との間でとりかわす約束ですが、この内容となるお互いの権利義務を規定しているのが <span class="blank-mark">[1]</span> です。</p>
+          <p>2. 生命保険会社はあらかじめ一定の契約条件、内容を定めた保険種類ごとの <span class="blank-mark">[1]</span> を作成し、<span class="blank-mark">[2]</span> の認可を受けて、契約者間相互が公平に契約できるようにしています。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "約款" },
+          { key: "イ", text: "定款" },
+          { key: "ウ", text: "法務大臣" },
+          { key: "エ", text: "内閣総理大臣" }
+        ],
+        subQuestions: [
+          {
+            num: 1,
+            answer: "ア",
+            explanation: "保険契約の内容となるお互いの権利義務を規定しているのは「約款（普通保険約款・特約）」です。"
+          },
+          {
+            num: 2,
+            answer: "エ",
+            explanation: "生命保険会社が保険種類ごとの約款を作成・変更する際は、「内閣総理大臣（金融庁長官に権限委任）」の認可を受ける必要があります。"
+          }
+        ]
+      },
+      {
+        title: "[募集時の正しい説明 - ②]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [3]～[5] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>1. 保険募集等の際、必ずお客さまに「<span class="blank-mark">[3]</span>」および「注意喚起情報」を記載した書面を、契約の申込みを <span class="blank-mark">[4]</span> 交付・説明する必要があります。<br>「<span class="blank-mark">[3]</span>」はお客さまが保険商品の内容を理解するために必要な情報であり、商品の仕組み、保障の内容、付加できる特約等の概要、保険金額や保険料に関する事項などが記載されています。</p>
+          <p>2. 生命保険の募集にあたっては、お客さまの財産や経済状況、加入目的や生活設計上のあり方、保険等に関する知識や経験によって、適する保険商品や負担すべき保険料の金額等が異なってきます。<br>私たちは、お客さまの目的や状況に応じた商品やサービスの提供をすること（<span class="blank-mark">[5]</span> にもとづく提案）に留意することが必要です。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "契約概要" },
+          { key: "イ", text: "意向確認書面" },
+          { key: "ウ", text: "いただいた後で" },
+          { key: "エ", text: "いただく前に" },
+          { key: "オ", text: "適合性の原則" },
+          { key: "カ", text: "安全性の原則" }
+        ],
+        subQuestions: [
+          {
+            num: 3,
+            answer: "ア",
+            explanation: "商品の仕組みや保障内容など、商品の理解に必要な重要事項を記載した書面は「契約概要」です。"
+          },
+          {
+            num: 4,
+            answer: "エ",
+            explanation: "「契約概要」および「注意喚起情報」は、契約の申込みを「いただく前に」交付・説明しなければなりません。"
+          },
+          {
+            num: 5,
+            answer: "オ",
+            explanation: "顧客の知識・経験・財産状況・加入目的などに照らして適切な商品を提案するルールを「適合性の原則」といいます。"
+          }
+        ]
+      },
+      {
+        title: "[剰余金と配当金 - ①]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [6]～[7] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>1. 剰余金が生まれる原因は、<span class="blank-mark">[6]</span>、利差益、費差益の3つに分類されます。このうち <span class="blank-mark">[6]</span> は、予定死亡率によって見込まれた死亡者数よりも、実際の死亡者数が少ない場合に生じる利益です。</p>
+          <p>2. 利差配当付保険は、予定死亡率・<span class="blank-mark">[7]</span> について無配当用の基礎率を設定し、保険料を割り引く代わりに、剰余金のうち利差益のみを配当金として還元する保険です。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "為替差益" },
+          { key: "イ", text: "死差益" },
+          { key: "ウ", text: "予定事業費率" },
+          { key: "エ", text: "固定事業費率" }
+        ],
+        subQuestions: [
+          {
+            num: 6,
+            answer: "イ",
+            explanation: "予定死亡者数よりも実際の死亡者数が少ない場合に生じる利益は「死差益」です。"
+          },
+          {
+            num: 7,
+            answer: "ウ",
+            explanation: "利差配当付保険では、予定死亡率と「予定事業費率」に無配当用の基礎率を設定し、利差益のみを配当として還元します。"
+          }
+        ]
+      },
+      {
+        title: "[剰余金と配当金 - ②]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [8]～[10] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>1. 有配当保険の配当金は、保険種類、性別、契約年齢、払込方法（回数）、経過年数、保険期間、保険金額などによって異なり、<span class="blank-mark">[8]</span> 間の公平を期しています。</p>
+          <p>2. 配当金の支払方法が、配当金を契約が消滅するまで、あるいは契約者から請求があるまで、生命保険会社に積み立てておく方法の場合、配当金は、<span class="blank-mark">[9]</span> の定める利率により <span class="blank-mark">[10]</span> で運用されます。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "被保険者" },
+          { key: "イ", text: "契約者" },
+          { key: "ウ", text: "保険業法" },
+          { key: "エ", text: "生命保険会社" },
+          { key: "オ", text: "単利" },
+          { key: "カ", text: "複利" }
+        ],
+        subQuestions: [
+          {
+            num: 8,
+            answer: "イ",
+            explanation: "剰余金への貢献度に応じた配当を行うことで「契約者」間の公平を期しています。"
+          },
+          {
+            num: 9,
+            answer: "エ",
+            explanation: "積立配当金の利率は「生命保険会社」が定めます。"
+          },
+          {
+            num: 10,
+            answer: "カ",
+            explanation: "積立配当金は所定の利率により「複利」で運用されます。"
+          }
+        ]
+      },
+      {
+        title: "[契約取り扱いの手続き - ①]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [11]～[12] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>1. 保険料を求める場合、まず <span class="blank-mark">[11]</span> の生年月日から契約年齢を求め、次にその契約年齢をもとに、保険種類、保険金額などに応じた保険料を求めます。</p>
+          <p>2. 契約年齢を求める方法として「<span class="blank-mark">[12]</span>」を使用する生命保険会社と、いわゆる「保険年齢」を使用する生命保険会社があります。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "保険契約者" },
+          { key: "イ", text: "被保険者" },
+          { key: "ウ", text: "数え年" },
+          { key: "エ", text: "満年齢" }
+        ],
+        subQuestions: [
+          {
+            num: 11,
+            answer: "イ",
+            explanation: "保険料の算定基礎となる契約年齢は、保障の対象である「被保険者」の生年月日から計算します。"
+          },
+          {
+            num: 12,
+            answer: "エ",
+            explanation: "契約年齢の計算方法には、満年齢をそのまま使う「満年齢」方式と、6ヵ月超を切り上げる「保険年齢」方式があります。"
+          }
+        ]
+      },
+      {
+        title: "[契約取り扱いの手続き - ②]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [13]～[15] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>1. 第1回保険料（充当金）領収証を書き損じたときは、<span class="blank-mark">[13]</span> することが必要です。</p>
+          <p>2. 新契約時の保険料が <span class="blank-mark">[14]</span> 以上のときは、第1回保険料（充当金）領収証には200円の収入印紙が必要です。</p>
+          <p>3. 診査とは、医師等による被保険者の健康調査などを指しますが、そのひとつに、<span class="blank-mark">[15]</span>（生命保険協会が定める専門の資格者）による所定の健康調査報告書によって行うものがあります。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "正確なものを新しく発行" },
+          { key: "イ", text: "訂正あるいは加筆" },
+          { key: "ウ", text: "40,000円" },
+          { key: "エ", text: "50,000円" },
+          { key: "オ", text: "生命保険面接士" },
+          { key: "カ", text: "嘱託医" }
+        ],
+        subQuestions: [
+          {
+            num: 13,
+            answer: "ア",
+            explanation: "領収証の訂正・加筆は厳禁であり、書き損じた場合は「正確なものを新しく発行」します（書き損じ分は会社へ返納）。"
+          },
+          {
+            num: 14,
+            answer: "エ",
+            explanation: "印紙税法上、受取金額が「50,000円」以上の領収証には200円の収入印紙を貼付します。"
+          },
+          {
+            num: 15,
+            answer: "オ",
+            explanation: "生命保険協会が定める専門の資格者として健康調査・報告を行うのは「生命保険面接士」です。"
+          }
+        ]
+      },
+      {
+        title: "[契約申込み時の実務 - ①]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [16]～[17] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>お客さまの契約の申込みに対して、これを生命保険会社が認めることを <span class="blank-mark">[16]</span> といい、生命保険会社が契約上の責任（保険金・給付金の支払いなど）を開始する時期を <span class="blank-mark">[17]</span> といいます。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "責任開始期" },
+          { key: "イ", text: "販売開始日" },
+          { key: "ウ", text: "査定" },
+          { key: "エ", text: "承諾" }
+        ],
+        subQuestions: [
+          {
+            num: 16,
+            answer: "エ",
+            explanation: "契約の申込みに対して生命保険会社が引き受けを認めることを「承諾」といいます。"
+          },
+          {
+            num: 17,
+            answer: "ア",
+            explanation: "生命保険会社が保障上の責任を開始する時期を「責任開始期（日）」といいます。"
+          }
+        ]
+      },
+      {
+        title: "[契約申込み時の実務 - ②]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [18]～[20] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>契約の申込みをしたあとでも、再度契約者が熟慮した結果、契約者が契約の取り消しを希望する場合もあります。この場合、①「契約申込みの撤回などについての事項を記載した書面」を交付された日、②「申込み」をした日、のいずれか遅い日を含めて消印日が <span class="blank-mark">[18]</span> 以内であれば、文書（郵送）で申込みの撤回または解除をすることができるようにしています。この制度を <span class="blank-mark">[19]</span> といいます。この場合には、<span class="blank-mark">[20]</span> をお返しします。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "既払込金額" },
+          { key: "イ", text: "解約返戻金" },
+          { key: "ウ", text: "8日" },
+          { key: "エ", text: "14日" },
+          { key: "オ", text: "クーリング・オフ" },
+          { key: "カ", text: "チェック・オフ" }
+        ],
+        subQuestions: [
+          {
+            num: 18,
+            answer: "ウ",
+            explanation: "生命保険のクーリング・オフ期間は、書面交付日または申込日のいずれか遅い日を含めて「8日」以内です。"
+          },
+          {
+            num: 19,
+            answer: "オ",
+            explanation: "一定期間内であれば無条件で申込みの撤回・契約の解除ができる制度を「クーリング・オフ」といいます。"
+          },
+          {
+            num: 20,
+            answer: "ア",
+            explanation: "クーリング・オフが成立した場合、すでに払い込まれた保険料（既払込金額）は全額返還されます。"
+          }
+        ]
+      },
+      {
+        title: "[社会保障制度 - ①]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [21]～[22] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>1. 公的扶助制度には、「<span class="blank-mark">[21]</span>」にもとづき、生活困窮者への程度に応じた保護と最低限度の生活保障およびその自立を手助けする制度があります。</p>
+          <p>2. <span class="blank-mark">[22]</span> には、「児童手当法」にもとづき、家庭等における生活の安定に寄与するとともに、次代の社会を担う児童の健やかな成長に資することを目的とした児童手当制度などがあります。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "雇用保険法" },
+          { key: "イ", text: "生活保護法" },
+          { key: "ウ", text: "社会扶助制度" },
+          { key: "エ", text: "社会保険制度" }
+        ],
+        subQuestions: [
+          {
+            num: 21,
+            answer: "イ",
+            explanation: "生活困窮者に対し最低限度の生活を保障し自立を助長する公的扶助制度は「生活保護法」にもとづきます。"
+          },
+          {
+            num: 22,
+            answer: "ウ",
+            explanation: "児童手当制度や母子福祉などの社会福祉・手当制度は「社会扶助制度」に分類されます。"
+          }
+        ]
+      },
+      {
+        title: "[社会保障制度 - ②]",
+        pointsEach: 1,
+        instruction: "文中の空欄 [23]～[25] に入る最も適切なものを選んでください。",
+        passage: `
+          <p>1. 国民年金は、原則として <span class="blank-mark">[23]</span> 歳以上60歳未満のすべての国民が被保険者となる最も基本的な年金で、基礎年金として支給されます。基礎年金には老齢・障害・<span class="blank-mark">[24]</span> の3つがあります。</p>
+          <p>2. 公的医療保険制度は、被保険者などの病気・ケガ・死亡または出産などに関する保険給付（労災適用分を除く）を担っており、原則として全国民が健康保険、国民健康保険などのいずれかの制度に強制加入となる「<span class="blank-mark">[25]</span> 体制」がとられています。</p>
+        `,
+        wordBank: [
+          { key: "ア", text: "18" },
+          { key: "イ", text: "20" },
+          { key: "ウ", text: "介護" },
+          { key: "エ", text: "遺族" },
+          { key: "オ", text: "国民皆保険" },
+          { key: "カ", text: "自由診療" }
+        ],
+        subQuestions: [
+          {
+            num: 23,
+            answer: "イ",
+            explanation: "国民年金は、日本国内に住所を有する「20」歳以上60歳未満のすべての人が原則として加入します。"
+          },
+          {
+            num: 24,
+            answer: "エ",
+            explanation: "基礎年金は、老齢基礎年金・障害基礎年金・「遺族」基礎年金の3種類です。"
+          },
+          {
+            num: 25,
+            answer: "オ",
+            explanation: "すべての国民が何らかの公的医療保険に加入する仕組みを「国民皆保険」体制といいます。"
+          }
+        ]
+      },
+      {
+        sectionTitle: "第2部：語群選択・計算問題（問題26～30：各2点）",
+        title: "[設計販売の基礎]",
+        pointsEach: 2,
+        instruction: "文中の空欄 [26]～[30] に入る最も適切なものを選んでください。（同じ解答を複数回使用してもかまいません。）",
+        passage: `
+          <p>次の計算式は、世帯主を勤労者である夫、配偶者（妻）は無収入の専業主婦とした場合の遺族生活資金の計算方法を表したものです。</p>
+          <p><strong>【設定条件】</strong><br>
+          ・夫死亡時（40歳）の家族構成は、妻（38歳）、子ども2人（12歳、7歳）とします。<br>
+          ・末子の大学卒業年齢は、22歳とします。<br>
+          ・現在の月間生活費は、40万円とします。<br>
+          ・家族の月間生活費は、現在の月間生活費の7割とします。<br>
+          ・妻の月間生活費は、現在の月間生活費の5割とします。</p>
+          <p>1. 家族の生活資金 ＝ 40万円 × 0.7 × 12ヵ月 ×（22歳 － <span class="blank-mark">[26]</span> 歳）</p>
+          <p>2. 妻の生活資金の計算<br>
+          ① 妻の平均余命を求める。<br>
+          <span class="blank-mark">[27]</span> 歳 ＋（22歳 － <span class="blank-mark">[26]</span> 歳）＝ <span class="blank-mark">[28]</span> 歳<br>
+          ・<span class="blank-mark">[28]</span> 歳時の平均余命 ＝ <span class="blank-mark">[29]</span> 年<br>
+          ② 妻の生活資金 ＝ 40万円 × 0.5 × 12ヵ月 × <span class="blank-mark">[29]</span> 年</p>
+          <p>3. 遺族生活資金 ＝ <span class="blank-mark">[30]</span></p>
+          <p><strong>・平均余命表（令和5年簡易生命表より）</strong></p>
+          <table class="life-table">
+            <thead>
+              <tr>
+                <th>年齢</th><th>男</th><th>女</th>
+                <th>年齢</th><th>男</th><th>女</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>50歳</td><td>33年</td><td>38年</td>
+                <td>53歳</td><td>30年</td><td>35年</td>
+              </tr>
+              <tr>
+                <td>51</td><td>32</td><td>37</td>
+                <td>54</td><td>29</td><td>34</td>
+              </tr>
+              <tr>
+                <td>52</td><td>31</td><td>36</td>
+                <td>55</td><td>28</td><td>34</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        wordBank: [
+          { key: "ア", text: "7" },
+          { key: "イ", text: "8" },
+          { key: "ウ", text: "35" },
+          { key: "エ", text: "36" },
+          { key: "オ", text: "37" },
+          { key: "カ", text: "38" },
+          { key: "キ", text: "53" },
+          { key: "ク", text: "54" },
+          { key: "ケ", text: "家族の生活資金 ＋ 妻の生活資金" },
+          { key: "コ", text: "家族の生活資金 － 妻の生活資金" }
+        ],
+        subQuestions: [
+          {
+            num: 26,
+            answer: "ア",
+            explanation: "末子（下の子ども）の現在の年齢が入ります。設定条件より末子は「7」歳（ア）です。"
+          },
+          {
+            num: 27,
+            answer: "カ",
+            explanation: "末子が大学を卒業する時点での妻の年齢を求めるため、現在の妻の年齢「38」歳（カ）が入ります。"
+          },
+          {
+            num: 28,
+            answer: "キ",
+            explanation: "38歳 ＋（22歳 － 7歳）＝ 38 ＋ 15 ＝「53」歳（キ）となります。"
+          },
+          {
+            num: 29,
+            answer: "ウ",
+            explanation: "平均余命表より、53歳・女性の平均余命は「35」年（ウ）です。"
+          },
+          {
+            num: 30,
+            answer: "ケ",
+            explanation: "遺族生活資金は、末子卒業までの「家族の生活資金 ＋ 妻の生活資金」（ケ）で求めます。"
+          }
+        ]
+      }
+    ];
+
+    const standaloneQuestions = [
+      // 問題31〜33：誤っているものを2つ選ぶ問題（各4点・部分点2点）
+      {
+        sectionTitle: "第3部：誤っているものを2つ選ぶ問題（問題31～33：各4点／部分点2点）",
+        num: 31,
+        title: "[生命保険の役割]",
+        type: "multi2",
+        points: 4,
+        prompt: "次の文章のうち、誤っているものを<strong>2つ</strong>選んでください。",
+        options: [
+          { key: "ア", text: "日本では、福沢諭吉が欧米の近代的保険制度を紹介したことが発端となり、大正時代に入って生命保険会社が設立されました。" },
+          { key: "イ", text: "「核家族世帯」が全体の半数以上を占め、加えて近年は高齢者を中心とした「単独世帯」が増加しており、経済生活に必要な保障は自己の責任において準備すべきであるという自己責任意識はますます強くなっています。" },
+          { key: "ウ", text: "令和5年簡易生命表によると、男性・女性の平均寿命はともに90歳を超えています。" },
+          { key: "エ", text: "社会保障制度は、国民に一定水準の生活保障をするもので、国民が健康で文化的な最低限度の生活を営むことができるよう、国などが社会政策の一環として実施する経済制度です。" }
+        ],
+        answers: ["ア", "ウ"],
+        explanation: "【正解：ア・ウ】<br>・ア：日本初の近代的生命保険会社（明治生命）が設立されたのは「明治時代（1881年）」であり、大正時代ではありません。<br>・ウ：令和5年簡易生命表の平均寿命は男性81.09年、女性87.14年であり、ともに90歳を超えていません。"
+      },
+      {
+        num: 32,
+        title: "[私たちの役割と心がまえ]",
+        type: "multi2",
+        points: 4,
+        prompt: "次の文章のうち、誤っているものを<strong>2つ</strong>選んでください。",
+        options: [
+          { key: "ア", text: "生命保険の販売活動では、契約の締結時だけではなく、その後も、お客さまに適切なアフターサービスを提供していくことが大切です。" },
+          { key: "イ", text: "生命保険の販売活動には、預金保険法等の法的な規制があり、それ以外にも、所属生命保険会社が定める行動規範や販売活動に関するルールがあります。" },
+          { key: "ウ", text: "生命保険の販売にあたっては、顕在ニーズのみにもとづいてお客さまにアプローチすればよく、潜在ニーズを引き出す必要はありません。" },
+          { key: "エ", text: "生命保険の目的は、保険事故が発生したときの経済的な保障をお客さまに提供することです。したがって、生命保険会社には社会的な責任があり、私たち生命保険募集人自身がその社会的役割の一翼を担っています。" }
+        ],
+        answers: ["イ", "ウ"],
+        explanation: "【正解：イ・ウ】<br>・イ：生命保険の販売活動を規制する主な法律は「保険業法」や「金融サービスの提供及び利用環境の整備等に関する法律」などであり、預金保険法ではありません。<br>・ウ：お客さま自身が気づいていない「潜在ニーズ」を的確に引き出し、顕在化させることがコンサルティング営業において重要です。"
+      },
+      {
+        num: 33,
+        title: "[契約の選択]",
+        type: "multi2",
+        points: 4,
+        prompt: "次の文章のうち、誤っているものを<strong>2つ</strong>選んでください。",
+        options: [
+          { key: "ア", text: "生命保険会社が契約を選択するにあたっては、職業上の危険、行動上の危険、道徳上の危険の3つの危険について、それぞれの危険度の大きさを把握することが大切になります。" },
+          { key: "イ", text: "モラルリスクとは、「生命保険を利用して、不正に利得しようとする心理状態」の人がすすんで生命保険に加入したがる傾向があることをいいます。" },
+          { key: "ウ", text: "契約の選択の手段として、生命保険募集人が、被保険者（または契約者）の現在の職業や仕事の内容を具体的に詳しく聞くことなどがあります。" },
+          { key: "エ", text: "医師の診査による契約の場合には、お客さまに告知いただくことはありません。" }
+        ],
+        answers: ["ア", "エ"],
+        explanation: "【正解：ア・エ】<br>・ア：契約選択において把握すべき3つの危険は「身体的危険・環境的危険・道徳的危険」です。<br>・エ：医師の診査を受ける場合でも、医師の質問や告知書による「告知」は必要です。"
+      },
+
+      // 問題34〜37：誤っているものを1つ選ぶ問題（各2点）
+      {
+        sectionTitle: "第4部：誤っているものを1つ選ぶ問題（問題34～37：各2点）",
+        num: 34,
+        title: "[生命保険の仕組み]",
+        type: "single",
+        points: 2,
+        prompt: "次の文章のうち、誤っているものを<strong>1つ</strong>選んでください。",
+        options: [
+          { key: "ア", text: "生命保険は「一人は万人のために、万人は一人のために」という相互扶助の精神で成り立っているといえます。" },
+          { key: "イ", text: "数少ない経験では何の法則もないようなことでも、数多くの経験を集めると、一定の法則があることがわかります。これを公平性の法則といいます。" },
+          { key: "ウ", text: "死亡率とは、ある年齢の人が1年間に死亡する割合をいい、1年間の死亡者数をその年の年始の生存者数で割ったものです。" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ】多数の観察データから一定の法則が見いだされることを「大数の法則」といいます（公平性の法則ではありません）。"
+      },
+      {
+        num: 35,
+        title: "[保全・アフターサービス手続きと留意点]",
+        type: "single",
+        points: 2,
+        prompt: "次の文章のうち、誤っているものを<strong>1つ</strong>選んでください。",
+        options: [
+          { key: "ア", text: "払済保険や延長（定期）保険に切り換えた場合、元の契約の各種特約部分は変更後、消滅します。" },
+          { key: "イ", text: "延長（定期）保険への切り換えの際、計算上の保険期間が元の契約の保険期間より短くなる場合には、その期間満了をもって契約は消滅します。" },
+          { key: "ウ", text: "保険期間の途中から保険金額を減らすことを減額といいます。減額部分は、解約されたものとして取り扱いますが、解約返戻金があっても払い戻しされません。" }
+        ],
+        answer: "ウ",
+        explanation: "【正解：ウ】減額部分は一部解約として取り扱われるため、減額部分に対応する「解約返戻金」があれば契約者に払い戻されます。"
+      },
+      {
+        num: 36,
+        title: "[隣接業界]",
+        type: "single",
+        points: 2,
+        prompt: "次の文章のうち、誤っているものを<strong>1つ</strong>選んでください。",
+        options: [
+          { key: "ア", text: "JA共済の生命共済の種類には、民間の生命保険の終身保険や定期保険特約付終身保険に相当する終身共済などがあります。" },
+          { key: "イ", text: "こくみん共済・各都道府県民共済は、いずれも農林水産省の監督のもと、組合員を対象に普及推進されており、原則として、無診査（告知扱い）で、小口の死亡保障に各種特約が付加されています。" },
+          { key: "ウ", text: "少額短期保険業者は、生命保険契約者保護機構の対象ではありません。" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ】農林水産省の監督を受けるのは「JA共済」です。こくみん共済（こくみん共済 coop）や都道府県民共済は厚生労働省等の監督を受けます。"
+      },
+      {
+        num: 37,
+        title: "[保険金・給付金の税法上の取り扱い（一時金で受け取った場合）]",
+        type: "single",
+        points: 2,
+        prompt: "次の文章のうち、誤っているものを<strong>1つ</strong>選んでください。",
+        options: [
+          { key: "ア", text: "「契約者（保険料負担者）＝夫、被保険者＝妻、保険金受取人＝子」の生命保険契約で子が受け取った死亡保険金は、贈与税の課税対象となります。" },
+          { key: "イ", text: "契約者（保険料負担者）と保険金受取人が同一人の保険契約では、満期・死亡いずれの場合も、受け取った保険金は一時所得となり、所得税の課税対象となります。" },
+          { key: "ウ", text: "贈与税の課税対象となる金額は、年間の贈与額から基礎控除額（60万円）を差し引いた金額となります。" }
+        ],
+        answer: "ウ",
+        explanation: "【正解：ウ】贈与税の基礎控除額は年間「110万円」です（60万円ではありません）。"
+      },
+
+      // 問題38〜67：正誤問題（各1点）
+      {
+        sectionTitle: "第5部：正誤問題（問題38～67：各1点）",
+        num: 38,
+        title: "[保険料の払い込み]",
+        type: "tf",
+        points: 1,
+        prompt: "まだ払込期月がきていない将来の保険料の一部または全部をあらかじめまとめて払い込むことができます。これを前納といいます。この場合、払い込む保険料の割り引きはありません。",
+        answer: "誤",
+        explanation: "【正解：誤】前納する場合、生命保険会社所定の利率で保険料が「割り引かれます」。"
+      },
+      {
+        num: 39,
+        title: "[保険料の払い込み]",
+        type: "tf",
+        points: 1,
+        prompt: "保険料の払込方法（経路）のうち、口座振替は、生命保険会社の定めた銀行、信用金庫などに保険金受取人の指定した口座がある場合に、その口座から保険料を生命保険会社の口座に振り替えることにより払い込む方法です。",
+        answer: "誤",
+        explanation: "【正解：誤】口座を指定するのは保険金受取人ではなく「保険契約者」です。"
+      },
+      {
+        num: 40,
+        title: "[保険料の払い込み]",
+        type: "tf",
+        points: 1,
+        prompt: "契約者の所属する勤務先団体（集団）と生命保険会社との間に「保険料の取り次ぎに関する団体（集団）取扱契約」が締結されている場合に、その団体（集団）を経由して給与引去りで払い込む方法を団体（集団）扱といいます。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 41,
+        title: "[保険料の払い込み]",
+        type: "tf",
+        points: 1,
+        prompt: "保険料の払込方法（回数）には、月払、半年払、年払および一時払の4種類があります。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 42,
+        title: "[保険料の払い込み]",
+        type: "tf",
+        points: 1,
+        prompt: "保険料の払込方法（回数）は、いかなる場合でも途中で変更することができません。",
+        answer: "誤",
+        explanation: "【正解：誤】月払から年払への変更など、所定の手続きにより途中で払込方法（回数）を変更することができます（一時払を除く）。"
+      },
+      {
+        num: 43,
+        title: "[企業向け商品]",
+        type: "tf",
+        points: 1,
+        prompt: "総合福祉団体定期保険は、従業員（役員を含むことができる）の死亡または所定の高度障害に対して保険金を支払う、5年更新の全員加入が原則の定期保険です。",
+        answer: "誤",
+        explanation: "【正解：誤】総合福祉団体定期保険は「1年更新」の定期保険です（5年更新ではありません）。"
+      },
+      {
+        num: 44,
+        title: "[企業向け商品]",
+        type: "tf",
+        points: 1,
+        prompt: "企業が従業員に対して、老後の生活の安定を図るために、退職後の終身あるいは一定期間の年金支給に備えて積み立てるタイプの保険を企業年金保険といいます。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 45,
+        title: "[企業向け商品]",
+        type: "tf",
+        points: 1,
+        prompt: "経営者保険は、経営者に万一のことがあった場合の経営上の損失補てんと遺族の生活保障、および経営者の退職金の準備などを目的として企業が一般の個人保険（財形商品を除く）を利用するものです。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 46,
+        title: "[企業向け商品]",
+        type: "tf",
+        points: 1,
+        prompt: "勤労者財産形成制度（財形制度）にもとづく保険には、財形貯蓄積立保険・財形教育積立保険・財形医療積立保険などがあります。",
+        answer: "誤",
+        explanation: "【正解：誤】財形制度にもとづく保険は「財形貯蓄積立保険」「財形住宅貯蓄積立保険」「財形年金積立保険」の3種類です。"
+      },
+      {
+        num: 47,
+        title: "[企業向け商品]",
+        type: "tf",
+        points: 1,
+        prompt: "医療保障保険（団体型）は、健康保険の本人一部負担制と保険給付対象外費用の増加などに対応し、公的医療保険制度の補完を目的とした企業（団体）向けの商品です。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 48,
+        title: "[生命保険の種類]",
+        type: "tf",
+        points: 1,
+        prompt: "死亡保険のうち、保険期間が被保険者の一生にわたっているものを定期保険といいます。",
+        answer: "誤",
+        explanation: "【正解：誤】保障が一生涯続く死亡保険は「終身保険」です。一定期間のみ保障するものが定期保険です。"
+      },
+      {
+        num: 49,
+        title: "[生命保険の種類]",
+        type: "tf",
+        points: 1,
+        prompt: "契約してから一定期間が満了するまで被保険者が生存していた場合にのみ保険金が支払われる保険を生存保険といいます。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 50,
+        title: "[生命保険の種類]",
+        type: "tf",
+        points: 1,
+        prompt: "死亡保険金と生存保険金（満期保険金）が同額の生命保険を養老保険といいます。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 51,
+        title: "[生命保険の種類]",
+        type: "tf",
+        points: 1,
+        prompt: "養老保険に定期保険を上乗せしたものを定期保険特約付養老保険といい、満期保険金より死亡の場合の保障を大きくすることができます。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 52,
+        title: "[生命保険の種類]",
+        type: "tf",
+        points: 1,
+        prompt: "終身保険タイプの変額保険（終身型）は、一生涯の死亡保障があり、死亡・高度障害保険金額は資産の運用実績にもとづいて毎月増減します。したがって、契約時に定めた保険金額（基本保険金額）は保証されていません。",
+        answer: "誤",
+        explanation: "【正解：誤】変額保険（終身型・有期型）であっても、死亡・高度障害保険金については契約時に定めた「基本保険金額」が最低保証されています（解約返戻金や満期保険金には最低保証がありません）。"
+      },
+      {
+        num: 53,
+        title: "[生命保険の募集等に関する法律]",
+        type: "tf",
+        points: 1,
+        prompt: "危険職種にあたる職業の人に、加入制限があるので制限のない他の職種を告知するようにすすめることは、保険募集に関する禁止行為に該当します。",
+        answer: "正",
+        explanation: "【正解：正】不実の告知をすすめる行為は、保険業法で定められた禁止行為（告知妨害・不実告知の教唆）に該当します。"
+      },
+      {
+        num: 54,
+        title: "[生命保険の募集等に関する法律]",
+        type: "tf",
+        points: 1,
+        prompt: "一般に同じ種類の保険ではないものを、あたかも同じ種類の保険のように比較した資料を使ったり、説明をしたりすることは、保険募集に関する禁止行為に該当します。",
+        answer: "正",
+        explanation: "【正解：正】不適切な比較表示・比較説明として保険業法上の禁止行為に該当します。"
+      },
+      {
+        num: 55,
+        title: "[生命保険の募集等に関する法律]",
+        type: "tf",
+        points: 1,
+        prompt: "消費者契約法は、消費者契約の対象を広くしており、保険契約も対象に含まれます。",
+        answer: "正",
+        explanation: "【正解：正】消費者（個人）と事業者（生命保険会社）との間で締結される保険契約も消費者契約法の対象に含まれます。"
+      },
+      {
+        num: 56,
+        title: "[生命保険の募集等に関する法律]",
+        type: "tf",
+        points: 1,
+        prompt: "「犯罪による収益の移転防止に関する法律（犯罪収益移転防止法）」の取引時確認が必要となるのは、生命保険契約の締結、満期保険金・年金・解約返戻金の支払い等の取引発生時や、100万円超の大口現金取引時などです。",
+        answer: "誤",
+        explanation: "【正解：誤】大口現金取引で取引時確認が必要となる基準は、100万円超ではなく「200万円超」です。"
+      },
+      {
+        num: 57,
+        title: "[生命保険の募集等に関する法律]",
+        type: "tf",
+        points: 1,
+        prompt: "保険契約者と保険会社との間の契約ルールを定めた「保険法」では、保険契約の定義が明確にされ、各種共済等はその対象とはなりません。",
+        answer: "誤",
+        explanation: "【正解：誤】保険法では実質的に保険契約と同じ性質を持つ「各種共済契約」も対象に含まれます。"
+      },
+      {
+        num: 58,
+        title: "[正しい告知の取り扱い]",
+        type: "tf",
+        points: 1,
+        prompt: "契約確認は、生命保険会社が、契約の成立前に申込内容や告知内容などについて確認を行うもので、契約成立後に契約確認を行うことはありません。",
+        answer: "誤",
+        explanation: "【正解：誤】契約確認は、契約の成立前だけでなく「契約成立後」に行われることもあります。"
+      },
+      {
+        num: 59,
+        title: "[正しい告知の取り扱い]",
+        type: "tf",
+        points: 1,
+        prompt: "生命保険会社は、契約成立後に「保険証券」を契約者に送付し、契約内容の確認をお願いしています。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+      {
+        num: 60,
+        title: "[正しい告知の取り扱い]",
+        type: "tf",
+        points: 1,
+        prompt: "生命保険会社は、告知義務違反による保険契約の解除の原因を知ってから1ヵ月以内に解除を行わなかった場合、保険契約を解除できません。",
+        answer: "正",
+        explanation: "【正解：正】解除の原因を知った時から1ヵ月経過、または責任開始日から2年（保険法では5年）経過した場合は解除できなくなります。"
+      },
+      {
+        num: 61,
+        title: "[正しい告知の取り扱い]",
+        type: "tf",
+        points: 1,
+        prompt: "告知義務違反の態様が特に重大な場合（現在の医療水準では治癒が困難または死亡危険の高い疾患の現病歴・既往歴等について告知をされなかった場合等）は、「詐欺による契約の取消し」になることがあります。この場合、すでに払い込んだ保険料は返還されます。",
+        answer: "誤",
+        explanation: "【正解：誤】詐欺による契約の取消しとなった場合、すでに払い込まれた保険料は「返還されません」。"
+      },
+      {
+        num: 62,
+        title: "[正しい告知の取り扱い]",
+        type: "tf",
+        points: 1,
+        prompt: "お客さまに対して「告知義務違反をしても2年経過すれば契約は解除されないので、正しい告知をする必要はありません」などと説明することは、重大な法令違反に該当します。",
+        answer: "正",
+        explanation: "【正解：正】不実告知をすすめる行為であり、重大な法令違反（保険業法違反）に該当します。"
+      },
+      {
+        num: 63,
+        title: "[保険金・給付金の請求と支払い（保険金・給付金を支払わない場合）]",
+        type: "tf",
+        points: 1,
+        prompt: "約款上、被保険者が、契約日または復活日から所定期間内に自殺したとき、「死亡保険金」は支払われません。",
+        answer: "正",
+        explanation: "【正解：正】約款所定の免責期間（一般的に3年以内）の自殺は免責事由となり、死亡保険金は支払われません。"
+      },
+      {
+        num: 64,
+        title: "[保険金・給付金の請求と支払い（保険金・給付金を支払わない場合）]",
+        type: "tf",
+        points: 1,
+        prompt: "約款上、複数の死亡保険金受取人のうちの1人が、故意に被保険者を死亡させたとき、他の受取人に対しても「死亡保険金」は支払われません。",
+        answer: "誤",
+        explanation: "【正解：誤】故意に被保険者を死亡させた受取人の受取分は支払われませんが、他の正当な受取人にはその人の受取割合に応じた死亡保険金が支払われます。"
+      },
+      {
+        num: 65,
+        title: "[保険金・給付金の請求と支払い（保険金・給付金を支払わない場合）]",
+        type: "tf",
+        points: 1,
+        prompt: "約款上、契約者が、故意に被保険者を死亡させたとき、「死亡保険金」は支払われません。",
+        answer: "正",
+        explanation: "【正解：正】契約者の故意による死亡は免責事由に該当し、死亡保険金は支払われません。"
+      },
+      {
+        num: 66,
+        title: "[保険金・給付金の請求と支払い（保険金・給付金を支払わない場合）]",
+        type: "tf",
+        points: 1,
+        prompt: "約款上、被保険者が、法令に定める運転資格をもたないで運転している間に生じた事故により死亡したとき、「災害死亡保険金」は支払われません。",
+        answer: "正",
+        explanation: "【正解：正】無免許運転や酒気帯び運転中の事故による死亡は、災害死亡保険金の免責事由です（通常の死亡保険金は支払われます）。"
+      },
+      {
+        num: 67,
+        title: "[保険金・給付金の請求と支払い（保険金・給付金を支払わない場合）]",
+        type: "tf",
+        points: 1,
+        prompt: "約款上、被保険者が、戦争その他の変乱によって死亡したとき、「死亡保険金」は支払われません。ただし、死亡した被保険者の数によっては、「死亡保険金」を全額または削減して支払うことがあります。",
+        answer: "正",
+        explanation: "【正解：正】記述のとおりです。"
+      },
+
+      // 問題68〜82：文章穴埋め（各1点）
+      {
+        sectionTitle: "第6部：文章穴埋め問題（問題68～82：各1点）",
+        num: 68,
+        title: "[資産の運用]",
+        type: "single",
+        points: 1,
+        prompt: "保険会社が運用する資産は、将来保険金として支払われるものなので、将来の支払いに支障がないように <span class='blank-mark'>[ ]</span> に運用することが必要です。",
+        options: [
+          { key: "ア", text: "投機的" },
+          { key: "イ", text: "安全" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ（安全）】生命保険会社の資産運用は、将来の保険金支払いに備えるため「安全」かつ有利に運用する必要があります。"
+      },
+      {
+        num: 69,
+        title: "[資産の運用]",
+        type: "single",
+        points: 1,
+        prompt: "生命保険会社の資産運用は、国際化・規制 <span class='blank-mark'>[ ]</span> の流れの中で、現在では運用リスクに対する資産の健全性確保も重要な課題となっています。",
+        options: [
+          { key: "ア", text: "強化" },
+          { key: "イ", text: "緩和" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ（緩和）】金融の国際化・規制「緩和」に伴い、資産運用の自由度が高まる一方でリスク管理が重要視されています。"
+      },
+      {
+        num: 70,
+        title: "[資産の運用]",
+        type: "single",
+        points: 1,
+        prompt: "生命保険会社の資産運用は、<span class='blank-mark'>[ ]</span> の資金として国民経済に大きな役割を果たしてきました。",
+        options: [
+          { key: "ア", text: "長期" },
+          { key: "イ", text: "短期" }
+        ],
+        answer: "ア",
+        explanation: "【正解：ア（長期）】生命保険契約は長期にわたるため、その積立金は「長期」の産業資金・社会資本として国民経済に貢献しています。"
+      },
+      {
+        num: 71,
+        title: "[資産の運用]",
+        type: "single",
+        points: 1,
+        prompt: "生命保険会社の資産運用の対象となる有価証券には、株式、<span class='blank-mark'>[ ]</span> などがあり、総資産の約8割をこの有価証券が占めています。",
+        options: [
+          { key: "ア", text: "不動産" },
+          { key: "イ", text: "公社債" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ（公社債）】有価証券には国債・社債などの「公社債」や株式、外国証券などがあります。"
+      },
+      {
+        num: 72,
+        title: "[資産の運用]",
+        type: "single",
+        points: 1,
+        prompt: "生命保険会社は、保険金の支払いが集中した場合に備えて、また、機動的な運用ができるように、資産の一部を <span class='blank-mark'>[ ]</span> のある預貯金などで保有することが必要です。",
+        options: [
+          { key: "ア", text: "換金性（流動性）" },
+          { key: "イ", text: "収益性" }
+        ],
+        answer: "ア",
+        explanation: "【正解：ア（換金性（流動性））】いつでも現金化できる「換金性（流動性）」を確保するため、一部を預貯金やコールローン等で保有します。"
+      },
+      {
+        num: 73,
+        title: "[生命保険会社の仕組み]",
+        type: "single",
+        points: 1,
+        prompt: "「基礎利益」とは、生命保険会社の1年間の保険本業の収益力を示す指標のひとつです。ここでいう保険本業とは、収納した保険料や運用収益から保険金・年金・給付金などを支払ったり、将来の支払いに備えるために <span class='blank-mark'>[ ]</span> を積み立て、運用したりすることなどをいいます。",
+        options: [
+          { key: "ア", text: "解約返戻金" },
+          { key: "イ", text: "責任準備金" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ（責任準備金）】将来の保険金・年金・給付金の支払いに備えて積み立てるお金を「責任準備金」といいます。"
+      },
+      {
+        num: 74,
+        title: "[生命保険会社の仕組み]",
+        type: "single",
+        points: 1,
+        prompt: "生命保険会社は、業務または財産の状況に照らして、現時点では破綻に至らないものの、将来において保険業の継続が困難となる可能性がある場合には、<span class='blank-mark'>[ ]</span> の保護を図るために、保険業法等法令に定める手続きを経たうえで、予定利率の見直しなど契約条件の変更を行うことができます。",
+        options: [
+          { key: "ア", text: "生命保険会社" },
+          { key: "イ", text: "契約者" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ（契約者）】経営破綻を未然に防ぎ「契約者」の保護を図るための契約条件変更制度があります。"
+      },
+      {
+        num: 75,
+        title: "[生命保険会社の仕組み]",
+        type: "single",
+        points: 1,
+        prompt: "生命保険会社の経営形態には、「相互会社」と「株式会社」の2つがあります。このうち「相互会社」は、<span class='blank-mark'>[ ]</span> に認められています。",
+        options: [
+          { key: "ア", text: "保険事業だけ" },
+          { key: "イ", text: "保険事業と銀行業" }
+        ],
+        answer: "ア",
+        explanation: "【正解：ア（保険事業だけ）】相互会社は保険業法にもとづき「保険事業だけ」に認められた特有の会社形態です。"
+      },
+      {
+        num: 76,
+        title: "[生命保険会社の仕組み]",
+        type: "single",
+        points: 1,
+        prompt: "生命保険会社の経営形態が「株式会社」の場合は、生命保険に加入した契約者は保険の契約関係だけで、会社の運営には参加しませんが、会社は利益金の一定割合を契約者配当として返還すること、<span class='blank-mark'>[ ]</span> の経営をすることなど、保険事業の性格から、相互会社と比べてもほとんど違いなく運営されています。",
+        options: [
+          { key: "ア", text: "契約者本位" },
+          { key: "イ", text: "生命保険会社本位" }
+        ],
+        answer: "ア",
+        explanation: "【正解：ア（契約者本位）】株式会社であっても、保険事業の公共性から「契約者本位」の経営が行われています。"
+      },
+      {
+        num: 77,
+        title: "[生命保険会社の仕組み]",
+        type: "single",
+        points: 1,
+        prompt: "保険業には生命保険事業の他に損害保険事業がありますが、2つの事業の兼営は禁止されています。ただし、規制緩和と業務の自由化の流れの中で、<span class='blank-mark'>[ ]</span> の認可のもとそれぞれ子会社形態で生損保相互に乗り入れることが可能となっています。",
+        options: [
+          { key: "ア", text: "経済産業大臣" },
+          { key: "イ", text: "内閣総理大臣" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ（内閣総理大臣）】子会社形態での生損保相互参入には「内閣総理大臣」の認可が必要です。"
+      },
+      {
+        num: 78,
+        title: "[保障の見直し]",
+        type: "single",
+        points: 1,
+        prompt: "「契約転換制度」は、現在の契約を解約することなく、その <span class='blank-mark'>[ ]</span> や配当金など（転換価格）を新しい契約の一部に充当する方法です。",
+        options: [
+          { key: "ア", text: "責任準備金" },
+          { key: "イ", text: "既払込保険料相当額" }
+        ],
+        answer: "ア",
+        explanation: "【正解：ア（責任準備金）】契約転換制度では、現在の契約の「責任準備金」や積立配当金などを転換価格として新契約に充当します。"
+      },
+      {
+        num: 79,
+        title: "[保障の見直し]",
+        type: "single",
+        points: 1,
+        prompt: "「定期保険特約などの中途付加」により、現在の契約の保障内容や保険期間は変えずに、<span class='blank-mark'>[ ]</span> などを増やすことができます。",
+        options: [
+          { key: "ア", text: "死亡保障額" },
+          { key: "イ", text: "生存保障額" }
+        ],
+        answer: "ア",
+        explanation: "【正解：ア（死亡保障額）】定期保険特約を中途付加することで、主契約を変えずに「死亡保障額」を上乗せできます。"
+      },
+      {
+        num: 80,
+        title: "[保障の見直し]",
+        type: "single",
+        points: 1,
+        prompt: "<span class='blank-mark'>[ ]</span> は、現在の契約はそのまま継続し、別の新しい保険契約に加入いただく方法です。",
+        options: [
+          { key: "ア", text: "追加契約" },
+          { key: "イ", text: "乗換契約" }
+        ],
+        answer: "ア",
+        explanation: "【正解：ア（追加契約）】既存の契約を継続したまま新規に保険を追加する方法は「追加契約」です。"
+      },
+      {
+        num: 81,
+        title: "[保障の見直し]",
+        type: "single",
+        points: 1,
+        prompt: "「契約転換制度」による取り扱いを行う場合には、契約転換により、保障内容、保険金額、<span class='blank-mark'>[ ]</span> などが全く新しく切り換わることを契約者に説明することが必要です。",
+        options: [
+          { key: "ア", text: "被保険者" },
+          { key: "イ", text: "保険料" }
+        ],
+        answer: "イ",
+        explanation: "【正解：イ（保険料）】契約転換制度では、転換時の年齢・予定利率にもとづき「保険料」や保障内容が新しく計算され切り換わります。"
+      },
+      {
+        num: 82,
+        title: "[保障の見直し]",
+        type: "single",
+        points: 1,
+        prompt: "契約はいったん解約すると元に戻すことができません。そのうえ新たに契約する場合は契約年齢が高くなり、通常の場合、保険料も高くなります。また、そのときの <span class='blank-mark'>[ ]</span> によっては、契約できない場合があります。",
+        options: [
+          { key: "ア", text: "健康状態" },
+          { key: "イ", text: "社会情勢" }
+        ],
+        answer: "ア",
+        explanation: "【正解：ア（健康状態）】再契約時には改めて告知・診査が必要となるため、そのときの「健康状態」によっては加入できないことがあります。"
+      }
+    ];
+
+    function renderQuiz() {
+      const container = document.getElementById("quiz-container");
+      let html = "";
+
+      // 第1部・第2部（語群形式）
+      groupQuestions.forEach((grp) => {
+        if (grp.sectionTitle) {
+          html += `<div class="section-header">${grp.sectionTitle}</div>`;
+        }
+        const wordItemsHtml = grp.wordBank
+          .map((w) => `<span><strong>${w.key}.</strong> ${w.text}</span>`)
+          .join("");
+
+        let subHtml = "";
+        grp.subQuestions.forEach((sq) => {
+          const radios = grp.wordBank
+            .map(
+              (w) => `
+              <label class="option-label">
+                <input type="radio" name="q_${sq.num}" value="${w.key}" />
+                <span><strong>${w.key}</strong></span>
+              </label>
+            `
+            )
+            .join("");
+
+          subHtml += `
+            <div class="sub-q-row" id="row_q_${sq.num}">
+              <div class="sub-q-header">
+                <span class="q-num-badge">問題 ${sq.num}（空欄 [${sq.num}]）</span>
+                <span class="pts-tag">${grp.pointsEach}点</span>
+                <span class="judge-badge" id="judge_q_${sq.num}"></span>
+              </div>
+              <div class="radio-group radio-inline">
+                ${radios}
+              </div>
+              <div class="explanation-box" id="exp_q_${sq.num}"></div>
+            </div>
+          `;
+        });
+
+        html += `
+          <div class="card">
+            <div class="card-title">
+              <span>${grp.title}</span>
+              <span class="pts-tag">各${grp.pointsEach}点</span>
+            </div>
+            <p style="margin-top:0; font-size:0.92rem;">${grp.instruction}</p>
+            <div class="passage">${grp.passage}</div>
+            <div class="word-bank">
+              <div class="word-bank-title">【語群】</div>
+              <div class="word-bank-items">${wordItemsHtml}</div>
+            </div>
+            ${subHtml}
+          </div>
+        `;
+      });
+
+      // 第3部〜第6部（単独問題）
+      standaloneQuestions.forEach((q) => {
+        if (q.sectionTitle) {
+          html += `<div class="section-header">${q.sectionTitle}</div>`;
+        }
+
+        let inputHtml = "";
+        if (q.type === "multi2") {
+          const checkboxes = q.options
+            .map(
+              (opt) => `
+              <label class="option-label">
+                <input type="checkbox" name="q_${q.num}" value="${opt.key}" onchange="limitTwoCheckboxes(${q.num}, this)" />
+                <span><strong>${opt.key}.</strong> ${opt.text}</span>
+              </label>
+            `
+            )
+            .join("");
+          inputHtml = `<div class="checkbox-group">${checkboxes}</div>`;
+        } else if (q.type === "single") {
+          const radios = q.options
+            .map(
+              (opt) => `
+              <label class="option-label">
+                <input type="radio" name="q_${q.num}" value="${opt.key}" />
+                <span><strong>${opt.key}.</strong> ${opt.text}</span>
+              </label>
+            `
+            )
+            .join("");
+          inputHtml = `<div class="radio-group">${radios}</div>`;
+        } else if (q.type === "tf") {
+          inputHtml = `
+            <div class="radio-group radio-inline">
+              <label class="option-label">
+                <input type="radio" name="q_${q.num}" value="正" />
+                <span><strong>正</strong></span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q_${q.num}" value="誤" />
+                <span><strong>誤</strong></span>
+              </label>
+            </div>
+          `;
+        }
+
+        html += `
+          <div class="card" id="row_q_${q.num}">
+            <div class="card-title">
+              <div>
+                <span class="q-num-badge">問題 ${q.num}</span>
+                <span style="margin-left:0.4rem;">${q.title}</span>
+              </div>
+              <div>
+                <span class="pts-tag">${q.points}点${q.type === "multi2" ? "（部分点2点）" : ""}</span>
+                <span class="judge-badge" id="judge_q_${q.num}"></span>
+              </div>
+            </div>
+            <p style="margin-top:0.25rem; font-size:0.95rem;">${q.prompt}</p>
+            ${inputHtml}
+            <div class="explanation-box" id="exp_q_${q.num}"></div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function limitTwoCheckboxes(qNum, currentBox) {
+      const checked = document.querySelectorAll(`input[name="q_${qNum}"]:checked`);
+      if (checked.length > 2) {
+        currentBox.checked = false;
+        alert("この問題は誤っているものを「2つ」まで選択してください。");
+      }
+    }
+
+    function gradeQuiz() {
+      let totalScore = 0;
+      const maxScore = 100;
+      let fullCorrectCount = 0;
+      const totalQuestions = 82;
+
+      // 1. 語群問題（1〜30）の採点
+      groupQuestions.forEach((grp) => {
+        grp.subQuestions.forEach((sq) => {
+          const selected = document.querySelector(`input[name="q_${sq.num}"]:checked`);
+          const userVal = selected ? selected.value : null;
+          const isCorrect = userVal === sq.answer;
+
+          const judgeEl = document.getElementById(`judge_q_${sq.num}`);
+          const expEl = document.getElementById(`exp_q_${sq.num}`);
+          const ansObj = grp.wordBank.find((w) => w.key === sq.answer);
+          const ansLabel = ansObj ? `${ansObj.key}（${ansObj.text}）` : sq.answer;
+
+          if (isCorrect) {
+            totalScore += grp.pointsEach;
+            fullCorrectCount += 1;
+            judgeEl.className = "judge-badge judge-correct";
+            judgeEl.textContent = "正解（◯）";
+            expEl.className = "explanation-box visible exp-correct";
+            expEl.innerHTML = `<strong>【正解：${ansLabel}】</strong><br>${sq.explanation}`;
+          } else {
+            judgeEl.className = "judge-badge judge-wrong";
+            judgeEl.textContent = "不正解（×）";
+            expEl.className = "explanation-box visible exp-wrong";
+            const yourLabel = userVal ? `あなたの回答：${userVal}` : "未回答";
+            expEl.innerHTML = `<strong>【正解：${ansLabel}】</strong>（${yourLabel}）<br>${sq.explanation}`;
+          }
+        });
+      });
+
+      // 2. 単独問題（31〜82）の採点
+      standaloneQuestions.forEach((q) => {
+        const judgeEl = document.getElementById(`judge_q_${q.num}`);
+        const expEl = document.getElementById(`exp_q_${q.num}`);
+
+        if (q.type === "multi2") {
+          const checkedNodes = Array.from(document.querySelectorAll(`input[name="q_${q.num}"]:checked`));
+          const userVals = checkedNodes.map((n) => n.value);
+
+          let matchCount = 0;
+          userVals.forEach((v) => {
+            if (q.answers.includes(v)) matchCount++;
+          });
+
+          // 2つ選択かつ2つとも正解なら4点、1つだけ正解を含み誤答が1つ以下なら部分点2点
+          let earned = 0;
+          if (userVals.length === 2 && matchCount === 2) {
+            earned = 4;
+          } else if (matchCount === 1 && userVals.length <= 2) {
+            earned = 2;
+          }
+
+          totalScore += earned;
+
+          if (earned === 4) {
+            fullCorrectCount += 1;
+            judgeEl.className = "judge-badge judge-correct";
+            judgeEl.textContent = "正解（◯） +4点";
+            expEl.className = "explanation-box visible exp-correct";
+            expEl.innerHTML = `${q.explanation}`;
+          } else if (earned === 2) {
+            judgeEl.className = "judge-badge judge-partial";
+            judgeEl.textContent = "部分点（△） +2点";
+            expEl.className = "explanation-box visible exp-partial";
+            const yourLabel = userVals.length > 0 ? userVals.join("・") : "未回答";
+            expEl.innerHTML = `（あなたの回答：${yourLabel}）<br>${q.explanation}`;
+          } else {
+            judgeEl.className = "judge-badge judge-wrong";
+            judgeEl.textContent = "不正解（×） 0点";
+            expEl.className = "explanation-box visible exp-wrong";
+            const yourLabel = userVals.length > 0 ? userVals.join("・") : "未回答";
+            expEl.innerHTML = `（あなたの回答：${yourLabel}）<br>${q.explanation}`;
+          }
+        } else {
+          const selected = document.querySelector(`input[name="q_${q.num}"]:checked`);
+          const userVal = selected ? selected.value : null;
+          const isCorrect = userVal === q.answer;
+
+          if (isCorrect) {
+            totalScore += q.points;
+            fullCorrectCount += 1;
+            judgeEl.className = "judge-badge judge-correct";
+            judgeEl.textContent = "正解（◯）";
+            expEl.className = "explanation-box visible exp-correct";
+            expEl.innerHTML = `${q.explanation}`;
+          } else {
+            judgeEl.className = "judge-badge judge-wrong";
+            judgeEl.textContent = "不正解（×）";
+            expEl.className = "explanation-box visible exp-wrong";
+            const yourLabel = userVal ? `あなたの回答：${userVal}` : "未回答";
+            expEl.innerHTML = `（${yourLabel}）<br>${q.explanation}`;
+          }
+        }
+      });
+
+      const rate = ((totalScore / maxScore) * 100).toFixed(1);
+      const banner = document.getElementById("score-banner");
+      document.getElementById("score-display").textContent = `${totalScore} / ${maxScore} 点`;
+      document.getElementById("rate-display").textContent = `得点率：${rate}%（完答数：${fullCorrectCount} / ${totalQuestions}問）`;
+
+      const passInd = document.getElementById("pass-indicator");
+      if (totalScore >= 70) {
+        passInd.innerHTML = `<span class="pass-badge pass-ok">合格ライン到達（70点以上）おめでとうございます！</span>`;
+      } else {
+        passInd.innerHTML = `<span class="pass-badge pass-ng">合格ライン（70点）まであと ${70 - totalScore} 点です</span>`;
+      }
+
+      banner.classList.add("visible");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetQuiz() {
+      document.getElementById("quiz-form").reset();
+      document.getElementById("score-banner").classList.remove("visible");
+
+      document.querySelectorAll(".judge-badge").forEach((el) => {
+        el.className = "judge-badge";
+        el.textContent = "";
+      });
+
+      document.querySelectorAll(".explanation-box").forEach((el) => {
+        el.className = "explanation-box";
+        el.innerHTML = "";
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    renderQuiz();
+  </script>
+</body>
+</html>
